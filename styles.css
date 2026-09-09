@@ -1,0 +1,386 @@
+body{
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    margin: 0;
+
+    background-image: url("images/pexels-john-callery.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container{
+    display: grid;
+    grid-template-rows: 10rem 1fr;
+    grid-template-columns: 1fr;
+
+    min-height: 100vh;
+}
+
+
+/*Slash screen*/
+.splash-screen{
+    background: #1992d4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    animation: splash 1s forwards 1s;
+
+}
+
+.splash-screen h1{
+    color: black;
+    width: 18rem;
+    font-size: 4rem;
+    animation: logoAppear 1s ease;
+}
+
+.splash-screen img{
+    width: 7%;
+    animation: logoAppear 1s ease;
+}
+
+@keyframes splash {
+    0%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+        visibility:hidden;
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes logoAppear{
+
+    from{
+
+        opacity:0;
+        transform:scale(.5);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:scale(1);
+
+    }
+
+}
+
+
+/*Logotipo*/
+.header{
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    justify-content: center;
+}
+
+.header img{
+    width: 7%;
+}
+
+.header h1{
+    color: black;
+    width: 18rem;
+    font-size: 4rem;
+}
+
+
+/*Caixa de Login*/
+.div-login{
+    grid-area: 2 / 1 / 3 / 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    
+}
+
+
+.box-login{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    background-color: #e3e8ef;
+
+    width: min(80rem, 90%);
+    min-height: 40rem;
+
+    border-radius: 2rem;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/*Dentro da caixa Welcome*/
+.box-welcome{
+    grid-column: 1 / 2;
+    background-image: url(images/pexels-olga-shiryaeva.jpg);
+    background-size: cover;
+    background-position: center;
+
+    padding: 3rem;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.box-welcome h1 {
+    position: relative;
+
+
+    font-size: 7rem;
+    line-height: 1.1;
+
+    margin: 0;
+
+    animation: welcomeAppear 1s ease-out 1s;
+}
+
+.box-welcome p {
+    position: relative;
+
+    font-size: 1.5rem;
+    margin: 1rem 0 0;
+
+    opacity: 0.9;
+
+    animation: welcomeAppear 2s ease-out 1s;
+}
+
+@keyframes welcomeAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.about-content {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -30%);
+
+    width: 70%;
+
+    text-align: center;
+    color: white;
+
+    opacity: 0;
+    z-index: 3;
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 2;
+
+    transition:
+        transform 0.6s ease,
+        opacity 0.6s ease;
+}
+
+.box-welcome:hover .welcome-content {
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.box-welcome:hover .about-content {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+
+
+/*Dentro da caixa Login*/
+.box-login-input{
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+
+    padding: 5rem;
+    gap: 1.5rem;
+
+}
+
+.box-login-input h1 {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.box-login-input label {
+    font-size: 1.5rem;
+}
+
+
+.box-login-input form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.box-login-input form button {
+    align-self: center;
+    margin-top: auto;
+    cursor: pointer;
+
+    width: min(26rem, 100%);
+    height: 3.2rem;
+
+    border: none;
+    border-radius: 1rem;
+
+    background: rgb(86, 86, 250);
+    color: white;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 0.4rem 0.8rem rgba(86, 86, 250, 0.3);
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+.box-login-input form button:hover {
+    background-color: rgb(135, 135, 241);
+    transform: translateY(-3px);
+    box-shadow: 0 0.8rem 1.5rem rgba(86,86,250,.4);
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 3rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+.input-box{
+    display: flex;
+    align-items: center;
+    background-color: white;
+
+}
+
+.input-box img{
+    width: 40px;
+    height: 40px;
+}
+
+.input-box input::placeholder {
+    color: #000000;
+    font-size: 1rem;
+    opacity: 1;
+    
+}
+
+.forgot_password{
+    align-self: flex-end;
+    margin-top: 0.5rem;
+    color:  #222222a2;
+    text-decoration: none;
+}
+
+.forgot_password:hover {
+    text-decoration: underline;
+}
+
+
+/*responsive design*/
+@media (max-width: 900px) {
+
+    .box-login {
+        grid-template-columns: 1fr;
+    }
+
+
+    .box-welcome {
+        grid-column: 1;
+        border-radius: 2rem 2rem 0 0 ;
+    }
+
+    .box-login-input {
+        grid-column: 1;
+    }
+    
+    .header img {
+        width: clamp(40px, 8vw, 80px);
+        height: auto;
+    }   
+
+}
+
+
+/*Para telemóvel*/
+@media (max-width: 600px) {
+
+    .box-login {
+        min-height: auto;
+    }
+
+    .box-login-input {
+        padding: 2rem;
+    }
+
+    .box-welcome {
+        min-height: 25rem;
+        container-type: inline-size;
+        border-radius: 2rem 2rem 0 0 ;
+    }
+
+    .box-welcome h1 {
+        font-size: clamp(3rem, 10cqw, 7rem);
+    }
+
+    .box-welcome p {
+        font-size: clamp(1rem, 1.5vw, 1.5rem);
+    }
+
+    .box-login-input h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .header img {
+        width: clamp(40px, 8vw, 80px);
+        height: auto;
+    }   
+    
+}
